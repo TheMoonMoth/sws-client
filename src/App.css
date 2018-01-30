@@ -29,9 +29,10 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 5px 10px;
-  box-shadow: 0px 3px 25px 1px hsl(0,0%,50%);
+  box-shadow: 0px 5px 25px 1px hsl(0,0%,50%);
   height: 5vh;
   font-family: "Playfair Display", serif;
+  z-index: 0;
 }
 
 h1 {
@@ -87,6 +88,7 @@ h1 {
   align-self: center;
   border: 1px solid #FFFFEA;
   line-height: 10px;
+  transform: rotate(90deg);
 }
 
 .dropdown {
@@ -98,9 +100,7 @@ h1 {
   display: none;
   position: absolute;
   background-color: #FFFFEA;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  min-width: 140px;
 }
 
 .dropdown-content a {

@@ -1,4 +1,5 @@
 import React from "react"
+import Emolyzer from "../sentiment.js"
 import "./Card.css"
 
 const Card = props => {
@@ -20,9 +21,18 @@ const Card = props => {
   }
 
   return (
+    <div className="content-window">
     <div id="story-card">
       <h2>{story.story}</h2>
       <small>{"~" + author}</small>
+    </div>
+    <section className="voters">
+      <button onClick={console.log("yes clicked")}>Yes!</button>
+      <button onClick={console.log("no clicked")}>No.</button>
+    </section>
+    <div>
+      <Emolyzer story={story.story} />
+    </div>
     </div>
   )
 }

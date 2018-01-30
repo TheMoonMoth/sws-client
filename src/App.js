@@ -29,6 +29,7 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
       <div className="App">
         <Header />
         <Card stories={this.state.stories} authors={this.state.authors} />
@@ -36,6 +37,7 @@ class App extends Component {
         <Form />
         <Footer />
       </div>
+      </Router>
     )
   }
 }
