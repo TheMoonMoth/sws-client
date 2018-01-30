@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i');
+
+#story-card {
+  color: #40403A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  width: 60%;
+  margin: 5vh auto;
+  font-family: "Playfair Display", serif;
+  padding: 10px 10px;
+}
+
+#story-card small {
+  margin-right: 25px;
+  align-self: flex-end;
+  font-style: italic;
+}

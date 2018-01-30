@@ -1,8 +1,11 @@
 import React, { Component } from "react"
-// import {BrowserRouter as Router, Route} from "react-router-dom"
+import {BrowserRouter as Router, Route} from "react-router-dom"
 import "./App.css"
 import Header from "./Header"
 import Card from "./Story"
+import Philosophy from "./Philosophy"
+import Form from "./Form"
+import Footer from "./Footer"
 
 
 class App extends Component {
@@ -28,7 +31,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Card stories={this.state.stories} authors={this.state.authors}/>
+        <Card stories={this.state.stories} authors={this.state.authors} />
+        <Philosophy />
+        <Form />
+        <Footer />
       </div>
     )
   }
