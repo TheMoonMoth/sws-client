@@ -5,7 +5,17 @@ const Form = props => {
 
   const submit = (e) => {
     e.preventDefault()
-    fetch("http://localhost:5000/new")
+    let form = new FormData(e.target)
+    let sender = {
+      story: form.get("story"),
+      author: form.get("author")
+    }
+
+    fetch("http://localhost:5000/new", {
+      method: "POST",
+      headers: {"Content-type": "application/json"},
+      body: JSON.stringify(form)
+    })
       .then(resp => resp.json())
       .then(resp => console.log(resp))
   }
@@ -16,7 +26,7 @@ const Form = props => {
       <input type="text" id="story" name="story" />
       <label htmlFor="author">Enter your name here:</label>
       <input type="text" id="author" name="author" />
-      <input type="submit"/>
+      <button id="submit" type="submit">Submit</button>
     </form>
   )
 }

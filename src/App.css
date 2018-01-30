@@ -13,7 +13,6 @@ div {
   justify-content: space-between;
   align-content: center;
   height: auto;
-  max-height: 100vh;
 }
 
 body {
@@ -41,20 +40,20 @@ h1 {
   font-style: italic;
 }
 
-
-#add-story:hover {
-  border-radius: 50%;
+.add-menu:hover .add-content {
+  display: block;
+  width: 40px;
   color: #FFFFEA;
-  background-color: #40403A;
-  font-size: 35px;
+  background-color: #FFFFEA;
+  font-size: 40px;
   align-self: center;
   line-height: 10px;
   padding-bottom: 6px;
+  border-bottom: 1px solid #40403A;
 }
 
 #add-story {
-  height: 35px;
-  width: 35px;
+  text-decoration: none;
   border-radius: 50%;
   color: #40403A;
   background-color: #FFFFEA;
@@ -63,6 +62,30 @@ h1 {
   border: 1px solid #FFFFEA;
   line-height: 10px;
   padding-bottom: 6px;
+}
+
+.add-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.add-content {
+  display: none;
+  position: absolute;
+  right: -50px;
+  margin-right: 50px;
+  background-color: #FFFFEA;
+  min-width: 140px;
+}
+
+.add-content a {
+  color: #40403A;
+  padding: 12px 16px;
+  font-family: "Playfair Display", serif;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 
@@ -76,7 +99,7 @@ h1 {
   align-self: center;
   line-height: 10px;
   padding-bottom: 6px;
-  border: 3px solid #FFFFEA;
+  border-bottom: 1px solid #40403A;
 }
 
 #menu {

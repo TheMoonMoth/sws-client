@@ -7,4 +7,35 @@ form {
   flex-direction: column;
   width: auto;
   align-items: center;
+  margin: 25px;
+}
+
+form label {
+  font-size: 1.2rem;
+  margin-top: 15px;
+}
+
+form input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 40%;
+  font-size: 1.1rem;
+  font-family: "Playfair Display", serif;
+  border-bottom: 1px solid #40403A;
+  text-align: center;
+}
+
+#submit {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 40%;
+  font-size: 1.1rem;
+  font-family: "Playfair Display", serif;
+  border-bottom: 1px solid #40403A;
+  text-align: center;
+  margin: 25px;
+  border-top: 1px solid black;
+  width: auto;
 }
