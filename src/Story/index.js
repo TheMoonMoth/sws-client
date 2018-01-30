@@ -20,6 +20,16 @@ const Card = props => {
     }
   }
 
+  const sayYes = (e) => {
+    e.preventDefault()
+    console.log("yes click")
+  }
+
+  const sayNo = (e) => {
+    e.preventDefault()
+    console.log("no click")
+  }
+
   return (
     <div className="content-window">
     <div id="story-card">
@@ -27,8 +37,8 @@ const Card = props => {
       <small>{"~" + author}</small>
     </div>
     <section className="voters">
-      <button onClick={console.log("yes clicked")}>Yes!</button>
-      <button onClick={console.log("no clicked")}>No.</button>
+      <button type="button" onClick={sayYes}>Yes!</button>
+      <button type="button" onClick={sayNo}>No.</button>
     </section>
     <div>
       <Emolyzer story={story.story} />
