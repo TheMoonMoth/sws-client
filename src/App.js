@@ -7,6 +7,8 @@ import Philosophy from "./Philosophy"
 import Form from "./Form"
 import Footer from "./Footer"
 import AllStories from "./AllStories"
+import MyStories from "./MyStories"
+import StoryList from "./StoryList"
 
 
 class App extends Component {
@@ -33,10 +35,11 @@ class App extends Component {
       <Router>
       <div className="App">
         <Route path="/" component={Header} />
-        <Route exact path="/" render={() => {return (<Card stories={this.state.stories} authors={this.state.authors} />)}} />
-        <Route exact path="/" render={() => {return (<Philosophy />)}} />
-        <Route exact path="/all-stories" render={() => {return (<AllStories stories={this.state.stories} authors={this.state.authors} />)}} />
-        <Route path="/new-story" render={() => {return <Form stories={this.state.stories} authors={this.state.authors} />}} />
+        <Route exact path="/" render={() => <Card stories={this.state.stories} authors={this.state.authors} />} />
+        <Route exact path="/" render={() => <Philosophy />} />
+        <Route exact path="/all-stories" render={() => <AllStories stories={this.state.stories} authors={this.state.authors} />} />
+        <Route path="/new-story" render={() => <Form stories={this.state.stories} authors={this.state.authors} />} />
+        <Route path="/my-stories" render={() => <MyStories stories={this.state.stories} authors={this.state.authors} />} />
         <Route path="/" component={Footer} />
       </div>
       </Router>
