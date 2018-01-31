@@ -36,7 +36,7 @@ class App extends Component {
         <Route exact path="/" render={() => {return (<Card stories={this.state.stories} authors={this.state.authors} />)}} />
         <Route exact path="/" render={() => {return (<Philosophy />)}} />
         <Route exact path="/all-stories" render={() => {return (<AllStories stories={this.state.stories} authors={this.state.authors} />)}} />
-        <Route path="/new-story" render={() => {return <Form />}} />
+        <Route path="/new-story" render={() => {return <Form stories={this.state.stories} authors={this.state.authors} />}} />
         <Route path="/" component={Footer} />
       </div>
       </Router>
