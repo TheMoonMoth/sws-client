@@ -8,7 +8,6 @@ import Form from "./Form"
 import Footer from "./Footer"
 import AllStories from "./AllStories"
 import MyStories from "./MyStories"
-import StoryList from "./StoryList"
 
 
 class App extends Component {

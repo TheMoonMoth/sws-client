@@ -1,6 +1,4 @@
 import React from "react"
-import ReactDOM from "react"
-import StoryList from "./StoryList"
 
 const MyStories = props => {
 
@@ -21,19 +19,8 @@ const MyStories = props => {
     fetch("http://localhost:5000/stories/" + name.id)
       .then(response => response.json())
       .then(response => stories = response.stories)
+      .then(response => console.log(stories))
 
-    console.log(stories)
-  }
-
-  const listStories = (array) => {
-    return array.map(storyObj => {
-      return (
-        <li>
-          <h4>{storyObj.story}</h4>
-          <small>~test author</small>
-        </li>
-      )
-    })
   }
 
   return(
