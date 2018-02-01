@@ -1,16 +1,18 @@
 import React from "react"
+import "./Card.css"
 
+//props.collection = {stories: [], authorName: "", authorId: 0}
 
-//stories = [storyObj, storyObj]
-//author = ""
 
 const StoryList = props => {
   return(
-    props.stories.map(storyObj => {
+    props.collection.stories.map(story => {
       return(
-        <div id="story-card">
-          <h2>Test card!</h2>
-          <small>Test author! </small>
+        <div key={story.story} className="content-window">
+          <div id="author-story-card">
+            <h2>{story.story}</h2>
+            <small>{"~" + props.collection.authorName}</small>
+          </div>
         </div>
       )
     })

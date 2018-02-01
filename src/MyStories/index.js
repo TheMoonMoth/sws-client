@@ -1,39 +1,48 @@
 import React from "react"
+import ReactDOM from "react"
+import StoryList from "./StoryList"
 
-const MyStories = props => {
+class MyStories extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      stories: [],
+      authorName: "",
+      authorId: 0
+    }
+  }
 
-  var name = {name: "", id: 0}
-  var stories = []
-
-  const getStories = (e) => {
+  getStories = e => {
     e.preventDefault()
-    let form = new FormData(e.target)
-    name.name = form.get("get-name")
-
-    props.authors.forEach(author => {
-      if (author.name === name.name){
-        name.id = author.id
+    this.props.authors.forEach(author => {
+      if (author.name === e.target[0].value) {
+        this.setState({authorId: author.id, authorName: e.target[0].value})
       }
     })
 
-    fetch("http://localhost:5000/stories/" + name.id)
+    setTimeout(() => {
+      fetch("http://localhost:5000/stories/" + this.state.authorId)
       .then(response => response.json())
-      .then(response => stories = response.stories)
-      .then(response => console.log(stories))
+      .then(response => this.setState({stories: response.stories}))
+    }, 100)
 
   }
 
-  return(
-    <div>
-      <form onSubmit={getStories}>
-        <label htmlFor="get-name">Enter your name:</label>
-        <input type="text" id="get-name" name="get-name" />
-        <button type="submit" id="get-name">Get stories</button>
-      </form>
-      <div id="author">
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.getStories}>
+          <label htmlFor="get-name">Enter your name:</label>
+          <input type="text" id="get-name" name="get-name" />
+          <button type="submit" id="get-name">
+            Get stories
+          </button>
+        </form>
+
+        <StoryList collection={this.state} />
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default MyStories
