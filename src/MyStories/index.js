@@ -1,5 +1,4 @@
 import React from "react"
-import ReactDOM from "react"
 import StoryList from "./StoryList"
 
 class MyStories extends React.Component {

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i');
 
-#story-card {
+.content-winder {
   color: #40403A;
   display: flex;
   flex-direction: column;
@@ -21,24 +21,11 @@
     0px 20px 1px -9px rgba(64,64,58, 0.2);
 }
 
-#story-card small {
+.content-winder small {
   align-self: flex-end;
   font-style: italic;
 }
 
-.voters {
-  max-height: 18px;
-  align-self: center;
-  border: 1px solid black;
-  display: flex;
-  justify-content: space-between;
-}
-
-.voters > button:first-child {
-  border-right: 1px solid black;
-  background-color: #FFFFEA;
-}
-
-.voters > button:last-child {
-  background-color: #FFFFEA;
+#deleter {
+  margin-top: 10px;
 }

@@ -39,3 +39,7 @@ form input {
   border-top: 1px solid black;
   width: auto;
 }
+
+.hidden {
+  display: none;
+}
