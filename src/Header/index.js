@@ -13,12 +13,11 @@ const Header = props => {
           <a href="/">A Random Story</a>
         </div>
       </div>
-      <h1>Six Word Stories</h1>
+      <a href="/"><h1>Six Word Stories</h1></a>
       <div className="add-menu">
         <button id="add-story">+</button>
         <div className="add-content">
           <a href="/new-story">Write A New Story</a>
-          <a href="/new-user">Create A New User</a>
         </div>
       </div>
     </header>

@@ -17,6 +17,19 @@ class App extends Component {
       stories: [],
       authors: []
     }
+    this.sayYes = this.sayYes.bind(this)
+    this.sayNo = this.sayNo.bind(this)
+  }
+
+  sayYes = (e) => {
+    e.preventDefault()
+    console.log("yes click")
+    console.log(e.target.parentNode.parentNode.firstChild.firstChild.textContent)
+  }
+
+  sayNo = (e) => {
+    e.preventDefault()
+    console.log("no click")
   }
 
   componentDidMount(){
@@ -34,11 +47,25 @@ class App extends Component {
       <Router>
       <div className="App">
         <Route path="/" component={Header} />
-        <Route exact path="/" render={() => <Card stories={this.state.stories} authors={this.state.authors} />} />
+        <Route exact path="/" render={() => <Card
+          stories={this.state.stories}
+          authors={this.state.authors}
+          sayYes={this.sayYes}
+          sayNo={this.sayNo}/>} />
         <Route exact path="/" render={() => <Philosophy />} />
-        <Route exact path="/all-stories" render={() => <AllStories stories={this.state.stories} authors={this.state.authors} />} />
-        <Route path="/new-story" render={() => <Form stories={this.state.stories} authors={this.state.authors} />} />
-        <Route path="/my-stories" render={() => {return <MyStories stories={this.state.stories} authors={this.state.authors} />}} />
+        <Route exact path="/all-stories" render={() => <AllStories
+          stories={this.state.stories}
+          authors={this.state.authors}
+          sayYes={this.sayYes}
+          sayNo={this.sayNo}/>} />
+        <Route path="/new-story" render={() => <Form
+          stories={this.state.stories}
+          authors={this.state.authors} />} />
+        <Route path="/my-stories" render={() => {return <MyStories
+          stories={this.state.stories}
+          authors={this.state.authors}
+          sayYes={this.sayYes}
+          sayNo={this.sayNo}/>}} />
         <Route path="/" component={Footer} />
       </div>
       </Router>

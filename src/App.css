@@ -40,6 +40,11 @@ h1 {
   font-style: italic;
 }
 
+header a {
+  text-decoration: none;
+  color: #40403A
+}
+
 .add-menu:hover .add-content {
   display: block;
   width: 40px;

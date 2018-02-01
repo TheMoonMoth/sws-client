@@ -9,16 +9,6 @@ const AllStories = props => {
     return <h3>No Data, yet</h3>
   }
 
-  const sayYes = (e) => {
-    e.preventDefault()
-    console.log("yes click")
-  }
-
-  const sayNo = (e) => {
-    e.preventDefault()
-    console.log("no click")
-  }
-
   return (
     props.stories.map(story => {
       for (var i = 0; i < props.authors.length; i++) {
@@ -28,14 +18,14 @@ const AllStories = props => {
       }
       return(
     <div className="content-window">
-    <div id="story-card">
-      <h2>{story.story}</h2>
-      <small>{"~" + author}</small>
-    </div>
-    <section className="voters">
-      <button type="button" onClick={sayYes}>Yes!</button>
-      <button type="button" onClick={sayNo}>No.</button>
-    </section>
+      <div id="story-card">
+        <h2>{story.story}</h2>
+        <small>{"~" + author}</small>
+      </div>
+      <section className="voters">
+        <button type="button" onClick={props.sayYes}>Yes!</button>
+        <button type="button" onClick={props.sayNo}>No.</button>
+      </section>
     </div>
   )}))
 }
