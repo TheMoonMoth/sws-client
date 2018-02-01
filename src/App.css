@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i');
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i");
 
 /* background = #FFFFEA
 font = #403D3B */
@@ -7,7 +7,7 @@ div {
   margin: 0;
   padding: 0;
   font-family: serif;
-  background-color: #FFFFEA;
+  background-color: #ffffea;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,17 +18,17 @@ div {
 body {
   margin: 0;
   padding: 0;
-  background-color: #FFFFEA;
+  background-color: #ffffea;
 }
 
 header {
-  background-color: #FFFFEA;
-  color: #403D3B;
+  background-color: #ffffea;
+  color: #403d3b;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 10px;
-  box-shadow: 0px 5px 25px 1px hsl(0,0%,50%);
+  box-shadow: 0px 5px 25px 1px hsl(0, 0%, 50%);
   height: 5vh;
   font-family: "Playfair Display", serif;
   z-index: 0;
@@ -42,29 +42,29 @@ h1 {
 
 header a {
   text-decoration: none;
-  color: #40403A
+  color: #40403a;
 }
 
 .add-menu:hover .add-content {
   display: block;
   width: 40px;
-  color: #FFFFEA;
-  background-color: #FFFFEA;
+  color: #ffffea;
+  background-color: #ffffea;
   font-size: 40px;
   align-self: center;
   line-height: 10px;
   padding-bottom: 6px;
-  border-bottom: 1px solid #40403A;
+  border-bottom: 1px solid #40403a;
 }
 
 #add-story {
   text-decoration: none;
   border-radius: 50%;
-  color: #40403A;
-  background-color: #FFFFEA;
+  color: #40403a;
+  background-color: #ffffea;
   font-size: 40px;
   align-self: center;
-  border: 1px solid #FFFFEA;
+  border: 1px solid #ffffea;
   line-height: 10px;
   padding-bottom: 6px;
 }
@@ -79,12 +79,12 @@ header a {
   position: absolute;
   right: -50px;
   margin-right: 50px;
-  background-color: #FFFFEA;
+  background-color: #ffffea;
   min-width: 140px;
 }
 
 .add-content a {
-  color: #40403A;
+  color: #40403a;
   padding: 12px 16px;
   font-family: "Playfair Display", serif;
   text-decoration: none;
@@ -93,28 +93,26 @@ header a {
   line-height: 20px;
 }
 
-
-
 .dropdown:hover .dropdown-content {
   display: block;
   width: 40px;
-  color: #FFFFEA;
-  background-color: #FFFFEA;
+  color: #ffffea;
+  background-color: #ffffea;
   font-size: 40px;
   align-self: center;
   line-height: 10px;
   padding-bottom: 6px;
-  border-bottom: 1px solid #40403A;
+  border-bottom: 1px solid #40403a;
 }
 
 #menu {
   height: 40px;
   width: 40px;
-  color: #40403A;
-  background-color: #FFFFEA;
+  color: #40403a;
+  background-color: #ffffea;
   font-size: 30px;
   align-self: center;
-  border: 1px solid #FFFFEA;
+  border: 1px solid #ffffea;
   line-height: 10px;
   transform: rotate(90deg);
 }
@@ -127,12 +125,12 @@ header a {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #FFFFEA;
+  background-color: #ffffea;
   min-width: 140px;
 }
 
 .dropdown-content a {
-  color: #40403A;
+  color: #40403a;
   padding: 12px 16px;
   font-family: "Playfair Display", serif;
   text-decoration: none;

@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i');
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i");
 
 form {
-  color: #40403A;
+  color: #40403a;
   font-family: "Playfair Display", serif;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@ form input {
   width: 40%;
   font-size: 1.1rem;
   font-family: "Playfair Display", serif;
-  border-bottom: 1px solid #40403A;
+  border-bottom: 1px solid #40403a;
   text-align: center;
 }
 
@@ -33,7 +33,7 @@ form input {
   width: 40%;
   font-size: 1.1rem;
   font-family: "Playfair Display", serif;
-  border-bottom: 1px solid #40403A;
+  border-bottom: 1px solid #40403a;
   text-align: center;
   margin: 25px;
   border-top: 1px solid black;

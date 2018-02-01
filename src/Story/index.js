@@ -26,10 +26,22 @@ const Card = props => {
         <small>{"~" + author}</small>
       </div>
       <section className="voters">
-        <button type="button" onClick={function(e){props.sayYes; window.location.href="/"}}>
+        <button
+          type="button"
+          onClick={function(e) {
+            props.sayYes
+            window.location.href = "/"
+          }}
+        >
           Yes!
         </button>
-        <button type="button" onClick={function(e){props.sayNo; window.location.href="/"}}>
+        <button
+          type="button"
+          onClick={function(e) {
+            props.sayNo
+            window.location.href = "/"
+          }}
+        >
           No.
         </button>
       </section>

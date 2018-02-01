@@ -15,16 +15,15 @@ class MyStories extends React.Component {
     e.preventDefault()
     this.props.authors.forEach(author => {
       if (author.name === e.target[0].value) {
-        this.setState({authorId: author.id, authorName: e.target[0].value})
+        this.setState({ authorId: author.id, authorName: e.target[0].value })
       }
     })
 
     setTimeout(() => {
       fetch("http://localhost:5000/stories/" + this.state.authorId)
-      .then(response => response.json())
-      .then(response => this.setState({stories: response.stories}))
+        .then(response => response.json())
+        .then(response => this.setState({ stories: response.stories }))
     }, 100)
-
   }
 
   render() {

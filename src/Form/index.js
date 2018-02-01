@@ -26,7 +26,7 @@ const Form = props => {
       }
     })
 
-    if (authorId === 0 ) {
+    if (authorId === 0) {
       fetch("http://localhost:5000/authors", {
         method: "POST",
         headers: { "Content-type": "application/json" },
@@ -36,9 +36,8 @@ const Form = props => {
       })
         .then(resp => resp.json())
         .then(resp => console.log(resp))
-        .then(authorId = props.authors.length)
+        .then((authorId = props.authors.length))
     }
-
 
     var sender = {
       story: form.get("story"),
@@ -53,9 +52,7 @@ const Form = props => {
     })
       .then(resp => resp.json())
       .then(resp => console.log(resp))
-      .then(window.location.href = "/")
-
-
+      .then((window.location.href = "/"))
   }
 
   return (
@@ -67,10 +64,8 @@ const Form = props => {
       <button id="submit" type="submit">
         Submit
       </button>
-      <div id="form-message">
-      </div>
+      <div id="form-message" />
     </form>
-
   )
 }
 
