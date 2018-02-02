@@ -105,7 +105,7 @@ class App extends Component {
 
     fetch("http://localhost:5000/emotions")
       .then(response => response.json())
-      .then(response => this.setState({emotions: response.emotions}))
+      .then(response => this.setState({ emotions: response.emotions }))
   }
 
   render() {
@@ -160,6 +160,7 @@ class App extends Component {
               )
             }}
           />
+
           <Route path="/" render={() => <Philosophy />} />
           <Route path="/" component={Footer} />
         </div>
