@@ -1,17 +1,22 @@
 import React from "react"
-import Emolyzer from "../sentiment.js"
+import Emolyzer from "../Emolyzer"
 import "./Card.css"
 
 const Card = props => {
   let story = props.stories[Math.floor(Math.random() * props.stories.length)]
 
   if (props.stories.length < 1) {
-    return <h3>No Data, yet</h3>
+    return <h3>No Stories, yet</h3>
   }
 
   if (props.authors.length < 1) {
-    return <h3>No Data, yet</h3>
+    return <h3>No Authors, yet</h3>
   }
+
+  if (props.emotions.length < 1) {
+    return <h3>No Emotions, yet</h3>
+  }
+
 
   for (var i = 0; i < props.authors.length; i++) {
     if (story.author_id === props.authors[i].id) {
@@ -20,33 +25,33 @@ const Card = props => {
   }
 
   return (
-    <div className="content-window">
-      <div id="story-card">
-        <h2>{story.story}</h2>
-        <small>{"~" + author}</small>
-      </div>
-      <section className="voters">
-        <button
-          type="button"
-          onClick={function(e) {
-            props.sayYes
-            window.location.href = "/"
-          }}
-        >
-          Yes!
-        </button>
-        <button
-          type="button"
-          onClick={function(e) {
-            props.sayNo
-            window.location.href = "/"
-          }}
-        >
-          No.
-        </button>
-      </section>
-      <div>
-        <Emolyzer story={story.story} />
+    <div>
+      <div className="content-window">
+        <div id="story-card">
+          <h2>{story.story}</h2>
+          <small>{"~" + author}</small>
+        </div>
+        <section className="voters">
+          <button
+            type="button"
+            onClick={(e) => {
+              props.sayYes
+              window.location.href = "/"
+            }}
+          >
+            Yes!
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              props.sayNo
+              window.location.href = "/"
+            }}
+          >
+            No.
+          </button>
+        </section>
+        <Emolyzer story={story.story} emotions={props.emotions}/>
       </div>
     </div>
   )

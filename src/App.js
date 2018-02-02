@@ -14,7 +14,8 @@ class App extends Component {
     super(props)
     this.state = {
       stories: [],
-      authors: []
+      authors: [],
+      emotions: []
     }
     this.sayYes = this.sayYes.bind(this)
     this.sayNo = this.sayNo.bind(this)
@@ -101,6 +102,10 @@ class App extends Component {
     fetch("http://localhost:5000/authors")
       .then(response => response.json())
       .then(response => this.setState({ authors: response.authors }))
+
+    fetch("http://localhost:5000/emotions")
+      .then(response => response.json())
+      .then(response => this.setState({emotions: response.emotions}))
   }
 
   render() {
@@ -115,12 +120,12 @@ class App extends Component {
               <Card
                 stories={this.state.stories}
                 authors={this.state.authors}
+                emotions={this.state.emotions}
                 sayYes={this.sayYes}
                 sayNo={this.sayNo}
               />
             )}
           />
-          <Route exact path="/" render={() => <Philosophy />} />
           <Route
             exact
             path="/all-stories"
@@ -135,12 +140,14 @@ class App extends Component {
             )}
           />
           <Route
+            exact
             path="/new-story"
             render={() => (
               <Form stories={this.state.stories} authors={this.state.authors} />
             )}
           />
           <Route
+            exact
             path="/my-stories"
             render={() => {
               return (
@@ -153,6 +160,7 @@ class App extends Component {
               )
             }}
           />
+          <Route path="/" render={() => <Philosophy />} />
           <Route path="/" component={Footer} />
         </div>
       </Router>

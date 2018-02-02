@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i');
+
+#emolyzer {
+  margin: 15px 15px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid black;
+  color: #40403A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  align-self: center;
+}
+
+#emolyzer h2 {
+  font-family: "Playfair Display", serif;
+  letter-spacing: 15px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  text-align: center;
+  max-width: 500px;
+}
+
+#emolyzer p {
+  font-family: "Playfair Display", serif;
+  text-align: center;
+}

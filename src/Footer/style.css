@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i');
 
-small {
+#footer small {
   color: #40403A;
   font-family: "Playfair display", serif;
   align-self: center;
+  position: relative;
+  bottom: 0
 }
