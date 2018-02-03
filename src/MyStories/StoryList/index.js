@@ -9,6 +9,7 @@ const StoryList = props => {
           <h2>{story.story}</h2>
           <small>{"~" + props.collection.authorName}</small>
         </div>
+        <p>{story.rating}</p>
         <button id="deleter">Delete Story</button>
       </div>
     )

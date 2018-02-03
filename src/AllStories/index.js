@@ -1,40 +1,41 @@
 import React from "react"
 
-const AllStories = props => {
-  if (props.stories.length < 1) {
-    return <h3>No Data, yet</h3>
-  }
+class AllStories extends React.Component {
 
-  if (props.authors.length < 1) {
-    return <h3>No Data, yet</h3>
-  }
+  render(){
 
-  return props.stories.map(story => {
-    for (var i = 0; i < props.authors.length; i++) {
-      if (story.author_id === props.authors[i].id) {
-        var author = props.authors[i].name
-      }
-    }
     return (
-      <div key={story.story} className="content-window">
-        <div id="story-card">
-          <h2>{story.story}</h2>
-          <small>{"~" + author}</small>
+      this.props.stories.sort((a, b) => {
+        return (b.rating) - (a.rating);
+      }).map(story => {
+        for (var i = 0; i < this.props.authors.length; i++) {
+          if (story.author_id === this.props.authors[i].id) {
+            var author = this.props.authors[i].name
+          }
+        }
+      return (
+        <div key={story.story} className="content-window">
+          <div id="story-card">
+            <h2>{story.story}</h2>
+            <small>{"~" + author}</small>
+          </div>
+          <section className="voters">
+            <button type="button" onClick={this.props.sayYes}>
+              Yes!
+            </button>
+            <p>{story.rating}</p>
+            <button type="button" onClick={this.props.sayNo}>
+              No.
+            </button>
+          </section>
+          <button id="deleter" onClick={this.props.deleteStory}>
+            Delete Story
+          </button>
         </div>
-        <section className="voters">
-          <button type="button" onClick={props.sayYes}>
-            Yes!
-          </button>
-          <button type="button" onClick={props.sayNo}>
-            No.
-          </button>
-        </section>
-        <button id="deleter" onClick={props.deleteStory}>
-          Delete Story
-        </button>
-      </div>
-    )
-  })
+      )
+    }))
+  }
 }
+
 
 export default AllStories

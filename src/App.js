@@ -48,6 +48,8 @@ class App extends Component {
 
   sayYes = e => {
     e.preventDefault()
+    var score = 1 + parseInt(e.target.parentNode.childNodes[1].textContent, 10)
+    e.target.parentNode.childNodes[1].textContent = score
     var text = e.target.parentNode.parentNode.firstChild.firstChild.textContent
     var id
     this.state.stories.forEach(story => {
@@ -72,6 +74,8 @@ class App extends Component {
 
   sayNo = e => {
     e.preventDefault()
+    var score = parseInt(e.target.parentNode.childNodes[1].textContent, 10) - 1
+    e.target.parentNode.childNodes[1].textContent = score
     var text = e.target.parentNode.parentNode.firstChild.firstChild.textContent
     var id
     this.state.stories.forEach(story => {

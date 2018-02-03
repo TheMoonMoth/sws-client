@@ -8,7 +8,6 @@ const Header = props => {
         <div className="dropdown-content">
           <a href="/">Home</a>
           <a href="/all-stories">All stories</a>
-          <a href="/top-stories">Top stories</a>
           <a href="/my-stories">My Stories</a>
           <a href="/">A Random Story</a>
         </div>
