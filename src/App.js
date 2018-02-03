@@ -57,6 +57,8 @@ class App extends Component {
         id = story.id
       }
     })
+    e.target.className = "hidden"
+    e.target.parentNode.childNodes[2].className = "hidden"
 
     fetch("http://localhost:5000/voteYes/" + id, {
       method: "PUT",
@@ -69,7 +71,6 @@ class App extends Component {
     })
       .then(response => response.json())
       .catch(error => console.error)
-      .then(response => console.log(response.message))
   }
 
   sayNo = e => {
@@ -83,6 +84,8 @@ class App extends Component {
         id = story.id
       }
     })
+    e.target.className = "hidden"
+    e.target.parentNode.childNodes[0].className = "hidden"
 
     fetch("http://localhost:5000/voteNo/" + id, {
       method: "PUT",
@@ -95,7 +98,6 @@ class App extends Component {
     })
       .then(response => response.json())
       .catch(error => console.error)
-      .then(response => console.log(response.message))
   }
 
   componentDidMount() {

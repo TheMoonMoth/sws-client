@@ -34,19 +34,14 @@ const Card = props => {
         <section className="voters">
           <button
             type="button"
-            onClick={(e) => {
-              props.sayYes
-              window.location.href = "/"
-            }}
+            onClick={props.sayYes}
           >
             Yes!
           </button>
+          <p>{story.rating}</p>
           <button
             type="button"
-            onClick={(e) => {
-              props.sayNo
-              window.location.href = "/"
-            }}
+            onClick={props.sayNo}
           >
             No.
           </button>

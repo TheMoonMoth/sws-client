@@ -28,9 +28,6 @@ class AllStories extends React.Component {
               No.
             </button>
           </section>
-          <button id="deleter" onClick={this.props.deleteStory}>
-            Delete Story
-          </button>
         </div>
       )
     }))
