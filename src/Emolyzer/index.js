@@ -2,17 +2,22 @@ import React from "react"
 import "./style.css"
 const sentiment = require("sentiment")
 
+//props.story should be a string
+//props.emotions should be an array of 13
 
 const Emolyzer = (props) => {
+
+  console.log(props.story)
+  console.log(props.emotions)
 
   var r1 = sentiment(props.story)
   let scoredEmotion
   let scoredDescription
 
-  if (r1.score > 6) {
+  if (r1.score >= 6) {
     scoredEmotion = props.emotions[12].emotion.toUpperCase()
     scoredDescription = props.emotions[12].description
-  } else if (r1.score < -6) {
+  } else if (r1.score <= -6) {
     scoredEmotion = props.emotions[0].emotion
     scoredDescription = props.emotions[0].description
   }

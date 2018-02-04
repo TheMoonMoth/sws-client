@@ -1,8 +1,14 @@
 import React from "react"
+import Emolyzer from "../Emolyzer"
+import "./style.css"
 
 class AllStories extends React.Component {
 
+
   render(){
+    if (this.props.emotions.length < 1) {
+      return <h3>No Emotions, yet</h3>
+    }
 
     return (
       this.props.stories.sort((a, b) => {
@@ -14,7 +20,7 @@ class AllStories extends React.Component {
           }
         }
       return (
-        <div key={story.story} className="content-window">
+        <div key={story.story} className="content-window" >
           <div id="story-card">
             <h2>{story.story}</h2>
             <small>{"~" + author}</small>
@@ -28,6 +34,9 @@ class AllStories extends React.Component {
               No.
             </button>
           </section>
+          <aside id="emo-slider">
+            <Emolyzer story={story.story} emotions={this.props.emotions}/>
+          </aside>
         </div>
       )
     }))

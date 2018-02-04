@@ -10,7 +10,7 @@ const StoryList = props => {
           <small>{"~" + props.collection.authorName}</small>
         </div>
         <p>{story.rating}</p>
-        <button id="deleter">Delete Story</button>
+        <button id="deleter" onClick={props.deleteStory}>Delete Story</button>
       </div>
     )
   })

@@ -29,7 +29,7 @@ const Card = props => {
       <div className="content-window">
         <div id="story-card">
           <h2>{story.story}</h2>
-          <small>{"~" + author}</small>
+          <small>{"~" + (author || "Anonymous")}</small>
         </div>
         <section className="voters">
           <button

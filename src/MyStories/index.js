@@ -37,7 +37,7 @@ class MyStories extends React.Component {
           </button>
         </form>
 
-        <StoryList collection={this.state} />
+        <StoryList collection={this.state} deleteStory={this.props.deleteStory}/>
       </div>
     )
   }

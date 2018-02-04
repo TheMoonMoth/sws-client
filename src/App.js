@@ -42,8 +42,6 @@ class App extends Component {
     })
       .then(response => response.json())
       .catch(error => console.error)
-      .then(response => console.log(response.message))
-      .then((window.location.href = "/all-stories"))
   }
 
   sayYes = e => {
@@ -139,6 +137,7 @@ class App extends Component {
               <AllStories
                 stories={this.state.stories}
                 authors={this.state.authors}
+                emotions={this.state.emotions}
                 sayYes={this.sayYes}
                 sayNo={this.sayNo}
                 deleteStory={this.deleteStory}
@@ -149,7 +148,12 @@ class App extends Component {
             exact
             path="/new-story"
             render={() => (
-              <Form stories={this.state.stories} authors={this.state.authors} />
+              <Form
+              stories={this.state.stories}
+              authors={this.state.authors}
+              emotions={this.state.emotions}
+              deleteStory={this.deleteStory}
+               />
             )}
           />
           <Route
@@ -162,6 +166,7 @@ class App extends Component {
                   authors={this.state.authors}
                   sayYes={this.sayYes}
                   sayNo={this.sayNo}
+                  deleteStory={this.deleteStory}
                 />
               )
             }}
