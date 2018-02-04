@@ -4,6 +4,8 @@ import LowWarning from "./lowWarning"
 import HighWarning from "./highWarning"
 import "./style.css"
 
+const APIurl = "https://sixwordstories-server.herokuapp.com/"
+
 const Form = props => {
   const submit = e => {
     e.preventDefault()
@@ -27,7 +29,7 @@ const Form = props => {
     })
 
     if (authorId === 0) {
-      fetch("http://localhost:5000/authors", {
+      fetch(APIurl + "authors", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
@@ -45,7 +47,7 @@ const Form = props => {
       rating: 0
     }
 
-    fetch("http://localhost:5000/stories", {
+    fetch(APIurl + "stories", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(sender)

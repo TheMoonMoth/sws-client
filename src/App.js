@@ -9,6 +9,8 @@ import Footer from "./Footer"
 import AllStories from "./AllStories"
 import MyStories from "./MyStories"
 
+const APIurl = "https://sixwordstories-server.herokuapp.com/"
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -37,7 +39,7 @@ class App extends Component {
       }
     })
 
-    fetch("http://localhost:5000/delete/" + id, {
+    fetch(APIurl + "delete/" + id, {
       method: "DELETE"
     })
       .then(response => response.json())
@@ -58,7 +60,7 @@ class App extends Component {
     e.target.className = "hidden"
     e.target.parentNode.childNodes[2].className = "hidden"
 
-    fetch("http://localhost:5000/voteYes/" + id, {
+    fetch(APIurl + "voteYes/" + id, {
       method: "PUT",
       body: JSON.stringify({
         story: text
@@ -85,7 +87,7 @@ class App extends Component {
     e.target.className = "hidden"
     e.target.parentNode.childNodes[0].className = "hidden"
 
-    fetch("http://localhost:5000/voteNo/" + id, {
+    fetch(APIurl + "voteNo/" + id, {
       method: "PUT",
       body: JSON.stringify({
         story: text
@@ -99,15 +101,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:5000/stories")
+    fetch(APIurl + "stories")
       .then(response => response.json())
       .then(response => this.setState({ stories: response.stories }))
 
-    fetch("http://localhost:5000/authors")
+    fetch(APIurl + "authors")
       .then(response => response.json())
       .then(response => this.setState({ authors: response.authors }))
 
-    fetch("http://localhost:5000/emotions")
+    fetch(APIurl + "emotions")
       .then(response => response.json())
       .then(response => this.setState({ emotions: response.emotions }))
   }

@@ -1,6 +1,8 @@
 import React from "react"
 import StoryList from "./StoryList"
 
+const APIurl = "https://sixwordstories-server.herokuapp.com/"
+
 class MyStories extends React.Component {
   constructor(props) {
     super(props)
@@ -20,7 +22,7 @@ class MyStories extends React.Component {
     })
 
     setTimeout(() => {
-      fetch("http://localhost:5000/stories/" + this.state.authorId)
+      fetch(APIurl + "stories/" + this.state.authorId)
         .then(response => response.json())
         .then(response => this.setState({ stories: response.stories }))
     }, 100)
