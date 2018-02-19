@@ -7,17 +7,16 @@ import "./style.css"
 const APIurl = "https://sixwordstories-server.herokuapp.com/"
 
 const Form = props => {
-  const submit = e => {
+
+  const submit = (e) => {
     e.preventDefault()
     let form = new FormData(e.target)
     let story = form.get("story").split(" ")
 
     if (story.length < 6) {
       ReactDOM.render(<LowWarning />, document.getElementById("form-message"))
-      return console.log("Story too short")
     } else if (story.length > 6) {
       ReactDOM.render(<HighWarning />, document.getElementById("form-message"))
-      return console.log("Story too long")
     }
 
     var authorId = 0
@@ -58,7 +57,7 @@ const Form = props => {
   }
 
   return (
-    <form onSubmit={submit} id="story-form-checker">
+    <form onSubmit={(e) => submit(e)} id="story-form-checker">
       <label htmlFor="story">Write your own six word story:</label>
       <input type="text" id="story" name="story" />
       <label htmlFor="author">Enter your name here:</label>

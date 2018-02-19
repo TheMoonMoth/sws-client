@@ -7,9 +7,6 @@ const sentiment = require("sentiment")
 
 const Emolyzer = (props) => {
 
-  console.log(props.story)
-  console.log(props.emotions)
-
   var r1 = sentiment(props.story)
   let scoredEmotion
   let scoredDescription
