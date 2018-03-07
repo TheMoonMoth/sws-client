@@ -61,7 +61,7 @@ class Form extends React.Component{
       .then(resp => resp.json())
       .then(resp => console.log(resp))
       .then(
-        setTimeout(()=>{window.location.href = "/"}, 500)
+        setTimeout(()=>{window.location.href = "/"}, 1000)
       )
   }
 
