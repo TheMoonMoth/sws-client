@@ -34,7 +34,8 @@ class Form extends React.Component{
     })
     .then(resp => resp.json())
     .then(resp => {
-      console.log(resp)
+      console.log("state change with this id!", resp.post.id)
+      this.setState({authorId: resp.post.id})
       return resp
     })
   }
@@ -89,8 +90,7 @@ class Form extends React.Component{
         }
       })
       .then(author => {
-        console.log('author', author);
-        return this.createStory({authorId: author.id, story: this.state.story});
+        return this.createStory({authorId: this.state.authorId, story: this.state.story});
       })
       .catch(err => {
         console.log('ERROR:', err);
