@@ -16,53 +16,44 @@ class Form extends React.Component{
     }
   }
 
-  submit = (e) => {
-    e.preventDefault()
-    let story = this.state.story.split(" ")
+  checkAuthor = (name) => {
+    return this.props.authors.find(author => author.name === name)
+  }
 
-    if (story.length < 6) {
-      ReactDOM.render(<LowWarning />, document.getElementById("form-message"))
-      return
-    } else if (story.length > 6) {
-      ReactDOM.render(<HighWarning />, document.getElementById("form-message"))
-      return
-    }
+  validate = ({story}) => {
+    return story.split(' ').length === 6
+  }
 
-    this.props.authors.forEach(author => {
-      if (author.name === this.state.author) {
-        this.setState({authorId: author.id})
-      }
-    })
-
-    if (this.state.authorId === 0) {
-      fetch(APIurl + "authors", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({
-          name: this.state.author
-        })
-      })
-        .then(resp => resp.json())
-        .then(resp => console.log(resp))
-        .then((this.state.authorId = this.props.authors.length))
-    }
-
-    var sender = {
-      story: this.state.story,
-      author_id: this.state.authorId,
-      rating: 0
-    }
-
-    fetch(APIurl + "stories", {
+  createAuthor = () => {
+    return fetch(APIurl + "authors", {
       method: "POST",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify(sender)
+      body: JSON.stringify({
+        name: this.state.author
+      })
     })
-      .then(resp => resp.json())
-      .then(resp => console.log(resp))
-      .then(
-        setTimeout(()=>{window.location.href = "/"}, 1000)
-      )
+    .then(resp => resp.json())
+    .then(resp => {
+      console.log(resp)
+      return resp
+    })
+  }
+
+  createStory = ({story, authorId}) => {
+    return fetch(APIurl + "stories", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        story: story,
+        author_id: authorId,
+        rating: 0
+      })
+    })
+    .then(resp => resp.json())
+    .then(resp => ReactDOM.render(<HighWarning />, document.getElementById("form-message")))
+    .then(()=>{
+      setTimeout(()=>{window.location.href = "/"}, 2000)
+    })
   }
 
   handleStory = (e) => {
@@ -74,6 +65,54 @@ class Form extends React.Component{
     e.preventDefault()
     this.setState({author: e.target.value})
   }
+
+  submit = (event) => {
+    event.preventDefault()
+
+    Promise.resolve(this.state)
+      .then(this.validate)
+      .then(isValid => {
+        if (!isValid) {
+          ReactDOM.render(<LowWarning />, document.getElementById("form-message"))
+          return Promise.reject(new Error('Story must be 6 words!'))
+        }
+        return this.checkAuthor(this.state.author)
+      })
+      .then(matchedAuthor => {
+        if (matchedAuthor) {
+          console.log('found author', matchedAuthor)
+          this.setState({authorId: matchedAuthor.id})
+          return matchedAuthor
+        } else {
+          console.log('creating author', this.state.author);
+          return this.createAuthor(this.state.author)
+        }
+      })
+      .then(author => {
+        console.log('author', author);
+        return this.createStory({authorId: author.id, story: this.state.story});
+      })
+      .catch(err => {
+        console.log('ERROR:', err);
+        this.setState({error: err.message})
+        if (err.message.indexOf('timeout') > -1) {
+          return this.submit(event)
+        }
+        return 'Keep going'
+      })
+  }
+
+
+    //
+    // if (story.length < 6) {
+    //   ReactDOM.render(<LowWarning />, document.getElementById("form-message"))
+    //   return
+    // } else if (story.length > 6) {
+    //   ReactDOM.render(<HighWarning />, document.getElementById("form-message"))
+    //   return
+    // }
+
+
 
   render(){
     return (
