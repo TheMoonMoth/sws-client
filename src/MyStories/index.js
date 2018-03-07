@@ -1,5 +1,6 @@
 import React from "react"
 import StoryList from "./StoryList"
+import "./style.css"
 
 const APIurl = "https://sixwordstories-server.herokuapp.com/"
 
@@ -34,8 +35,8 @@ class MyStories extends React.Component {
         <form onSubmit={this.getStories}>
           <label htmlFor="get-name">Enter your name:</label>
           <input type="text" id="get-name" name="get-name" />
-          <button type="submit" id="get-name">
-            Get stories
+          <button type="submit" id="get-name-button">
+            Get Stories
           </button>
         </form>
 

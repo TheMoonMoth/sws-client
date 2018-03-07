@@ -6,43 +6,50 @@ import "./style.css"
 
 const APIurl = "https://sixwordstories-server.herokuapp.com/"
 
-const Form = props => {
+class Form extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      story: "",
+      author: "",
+      authorId: 0
+    }
+  }
 
-  const submit = (e) => {
+  submit = (e) => {
     e.preventDefault()
-    let form = new FormData(e.target)
-    let story = form.get("story").split(" ")
+    let story = this.state.story.split(" ")
 
     if (story.length < 6) {
       ReactDOM.render(<LowWarning />, document.getElementById("form-message"))
+      return
     } else if (story.length > 6) {
       ReactDOM.render(<HighWarning />, document.getElementById("form-message"))
+      return
     }
 
-    var authorId = 0
-
-    props.authors.forEach(author => {
-      if (author.name === form.get("author")) {
-        authorId = author.id
+    this.props.authors.forEach(author => {
+      if (author.name === this.state.author) {
+        this.setState({authorId: author.id})
       }
     })
 
-    if (authorId === 0) {
+    if (this.state.authorId === 0) {
       fetch(APIurl + "authors", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
-          name: form.get("author")
+          name: this.state.author
         })
       })
         .then(resp => resp.json())
         .then(resp => console.log(resp))
-        .then((authorId = props.authors.length))
+        .then((this.state.authorId = this.props.authors.length))
     }
 
     var sender = {
-      story: form.get("story"),
-      author_id: authorId,
+      story: this.state.story,
+      author_id: this.state.authorId,
       rating: 0
     }
 
@@ -53,21 +60,35 @@ const Form = props => {
     })
       .then(resp => resp.json())
       .then(resp => console.log(resp))
-      .then((window.location.href = "/"))
+      .then(
+        setTimeout(()=>{window.location.href = "/"}, 500)
+      )
   }
 
-  return (
-    <form onSubmit={(e) => submit(e)} id="story-form-checker">
-      <label htmlFor="story">Write your own six word story:</label>
-      <input type="text" id="story" name="story" />
-      <label htmlFor="author">Enter your name here:</label>
-      <input type="text" id="author" name="author" />
-      <button id="submit" type="submit">
-        Submit
-      </button>
-      <div id="form-message" />
-    </form>
-  )
+  handleStory = (e) => {
+    e.preventDefault()
+    this.setState({story: e.target.value})
+  }
+
+  handleAuthor = (e) => {
+    e.preventDefault()
+    this.setState({author: e.target.value})
+  }
+
+  render(){
+    return (
+      <form onSubmit={(e) => this.submit(e)} id="story-form-checker">
+        <label htmlFor="story">Write your own six word story:</label>
+        <input type="text" id="story" value={this.state.story} onChange={(e)=>this.handleStory(e)}/>
+        <label htmlFor="author">Enter your name here:</label>
+        <input type="text" id="author" value={this.state.author} onChange={(e)=>this.handleAuthor(e)} />
+        <button id="submit" type="submit">
+          Submit
+        </button>
+        <div id="form-message" />
+      </form>
+    )
+  }
 }
 
 export default Form
